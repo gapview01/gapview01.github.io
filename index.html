@@ -16,7 +16,7 @@
   /* robot CONTAINED upper-right, only a small bleed off the right edge (like the reference) */
   /* real asset toreva-head-tilted.png — already tilted; transparent padding so sized by visual match */
   .robot {
-    position:absolute; width:326px; top:6px; right:-58px; z-index:1;
+    position:absolute; width:306px; top:8px; right:-52px; z-index:1;
     filter: drop-shadow(0 20px 30px rgba(0,0,0,0.55));
     pointer-events:none; user-select:none;
     animation: float 5s ease-in-out infinite;
@@ -35,14 +35,14 @@
     margin-top:20px; z-index:2; font-family:'Space Grotesk',sans-serif; font-weight:700;
     font-size:27px; letter-spacing:-0.01em; color:#fff; display:flex; align-items:center; gap:10px;
   }
-  .reel { display:inline-block; height:1.2em; overflow:hidden; position:relative; }
+  .reel { display:inline-block; height:1.1em; overflow:hidden; position:relative; top:-1px; }
   .reel ul { list-style:none; animation: roll 6s steps(1,end) infinite; }
-  .reel li { height:1.2em; line-height:1.2em; font-weight:700;
+  .reel li { height:1.1em; line-height:1.1em; font-weight:700;
              background:linear-gradient(90deg,#00B5A5 0%,#E8B84A 100%);
              -webkit-background-clip:text; background-clip:text; color:transparent; }
   @keyframes roll {
-    0%,18%{transform:translateY(0)} 25%,43%{transform:translateY(-1.2em)}
-    50%,68%{transform:translateY(-2.4em)} 75%,93%{transform:translateY(-3.6em)} 100%{transform:translateY(-4.8em)}
+    0%,18%{transform:translateY(0)} 25%,43%{transform:translateY(-1.1em)}
+    50%,68%{transform:translateY(-2.2em)} 75%,93%{transform:translateY(-3.3em)} 100%{transform:translateY(-4.4em)}
   }
   .grow { flex:1 1 auto; min-height:24px; }
   .footer { z-index:3; padding-bottom:34px; }
