@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" /><meta http-equiv="Expires" content="0" />
+<meta name="viewport" content="width=390, initial-scale=1, viewport-fit=cover" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:#1B1B1E;}
+  .screen{position:relative;width:100%;min-height:100dvh;overflow:hidden;background:#1B1B1E;
+          display:flex;flex-direction:column;padding:0 24px;font-family:'Plus Jakarta Sans',system-ui,sans-serif;}
+  /* top bar */
+  .topbar{display:flex;align-items:center;gap:12px;padding-top:20px;}
+  .back{width:24px;height:24px;flex:0 0 auto;cursor:pointer;}
+  .back svg{stroke:rgba(255,255,255,0.9);}
+  .segs{flex:1 1 auto;display:flex;gap:6px;}
+  .seg{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,0.12);}
+  .seg.box{background:#00B5A5;}
+  .chip{flex:0 0 auto;display:flex;align-items:center;gap:8px;}
+  .sq{width:11px;height:11px;border-radius:2px;background:#00B5A5;}
+  .chip span{font-size:13px;font-weight:600;letter-spacing:0.04em;color:rgba(255,255,255,0.8);text-transform:uppercase;}
+  /* headline */
+  .h1{margin-top:40px;font-size:40px;font-weight:800;line-height:1.05;letter-spacing:-0.03em;color:#fff;}
+  .h1 .dot{color:#FF6A2C;}
+  .sub{margin-top:12px;font-size:16px;font-weight:500;line-height:1.45;color:rgba(255,255,255,0.6);white-space:nowrap;}
+  /* date card — one unified card, subtle elevation over the charcoal canvas */
+  .card{margin-top:32px;border-radius:28px;background:#26262A;padding:14px 0;}
+  .row{height:84px;display:flex;align-items:center;justify-content:center;}
+  .dob{width:100%;text-align:center;background:transparent;border:none;outline:none;color:#fff;
+       font-family:'Plus Jakarta Sans',sans-serif;font-size:40px;font-weight:800;letter-spacing:-0.02em;}
+  .dob::placeholder{color:rgba(255,255,255,0.35);}
+  /* footer */
+  .grow{flex:1 1 auto;min-height:24px;}
+  .footer{padding-bottom:24px;}
+  .cta{width:100%;height:64px;border:none;border-radius:9999px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.35);
+       font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:700;
+       display:flex;align-items:center;justify-content:center;gap:8px;cursor:not-allowed;transition:background .15s,color .15s;}
+  .cta.on{background:#00B5A5;color:#0E0E0E;cursor:pointer;}
+  .cta svg{stroke:currentColor;}
+  .stripe{position:absolute;bottom:0;left:0;right:0;height:3px;
+          background:linear-gradient(90deg,#FF6A2C 0%,#E8B84A 50%,#00B5A5 100%);}
+</style>
+</head>
+<body>
+  <div class="screen">
+    <div class="topbar">
+      <span class="back" onclick="history.length>1?history.back():location.href='name.html'"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></span>
+      <span class="segs"><span class="seg box"></span><span class="seg"></span><span class="seg"></span></span>
+      <span class="chip"><span class="sq"></span><span>Box it</span></span>
+    </div>
+
+    <div class="h1">Your birthday<span class="dot">.</span></div>
+    <div class="sub">Confirms you&rsquo;re 18+. ID comes later.</div>
+
+    <div class="card">
+      <div class="row"><input class="dob" id="d" inputmode="numeric" maxlength="2" placeholder="DD" /></div>
+      <div class="row"><input class="dob" id="m" inputmode="numeric" maxlength="2" placeholder="MM" /></div>
+      <div class="row"><input class="dob" id="y" inputmode="numeric" maxlength="4" placeholder="YYYY" /></div>
+    </div>
+
+    <div class="grow"></div>
+
+    <div class="footer">
+      <button id="go" class="cta" onclick="if(this.classList.contains('on'))location.href='index.html'">Continue
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+    <div class="stripe"></div>
+  </div>
+  <script>
+    function check(){
+      var dd=document.getElementById('d').value, mm=document.getElementById('m').value, yy=document.getElementById('y').value;
+      var ok = dd.length>=1 && mm.length>=1 && yy.length===4;
+      document.getElementById('go').classList.toggle('on', ok);
+    }
+    document.querySelectorAll('.dob').forEach(function(el){el.addEventListener('input',check);});
+  </script>
+</body>
+</html>

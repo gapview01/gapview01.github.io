@@ -56,12 +56,12 @@
 
     <input id="nm" class="field" type="text" placeholder="Your name" autocomplete="name" autocapitalize="words" autofocus
            oninput="document.getElementById('go').classList.toggle('on', this.value.trim().length>0)"
-           onkeydown="if(event.key==='Enter'&&this.value.trim())location.href='index.html'" />
+           onkeydown="if(event.key==='Enter'&&this.value.trim())location.href='birthday.html'" />
 
     <div class="grow"></div>
 
     <div class="footer">
-      <button id="go" class="cta" onclick="if(this.classList.contains('on'))location.href='index.html'">Continue
+      <button id="go" class="cta" onclick="if(this.classList.contains('on'))location.href='birthday.html'">Continue
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
     </div>
