@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
 <meta name="viewport" content="width=390, initial-scale=1, viewport-fit=cover" />
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&family=Space+Grotesk:wght@400;500;700&display=swap');
@@ -11,17 +14,18 @@
   .back { width:44px; height:44px; margin-top:24px; border-radius:50%; background:rgba(255,255,255,0.06);
           display:flex; align-items:center; justify-content:center; cursor:pointer; }
   .back svg { stroke:rgba(255,255,255,0.7); }
-  h1 { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:44px; line-height:1.04;
-       letter-spacing:-0.035em; color:#fff; margin-top:28px; }
+  /* STANDARD type scale (matches Hi-Toreva): header 40px, subheader 24px, body 17px */
+  h1 { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:40px; line-height:1.05;
+       letter-spacing:-0.03em; color:#fff; margin-top:28px; }
   h1 .dot { color:#FF6A2C; }
-  .updated { margin-top:10px; font-size:17px; font-weight:400; color:rgba(255,255,255,0.5); }
-  p { margin-top:26px; font-size:18px; line-height:1.55; font-weight:400; color:rgba(255,255,255,0.7); }
+  .updated { margin-top:10px; font-size:17px; font-weight:400; color:rgba(255,255,255,0.55); }
+  p { margin-top:24px; font-size:17px; line-height:1.5; font-weight:400; color:rgba(255,255,255,0.7); }
   p b, li b { color:#fff; font-weight:700; }
-  h2 { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:26px; letter-spacing:-0.02em;
-       color:#fff; margin-top:48px; }
-  h2 + p { margin-top:14px; }
-  ul { list-style:none; margin-top:18px; }
-  li { position:relative; padding-left:22px; margin-top:20px; font-size:18px; line-height:1.5;
+  h2 { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:24px; letter-spacing:-0.02em;
+       color:#fff; margin-top:44px; }
+  h2 + p { margin-top:12px; }
+  ul { list-style:none; margin-top:16px; }
+  li { position:relative; padding-left:22px; margin-top:18px; font-size:17px; line-height:1.5;
        font-weight:400; color:rgba(255,255,255,0.7); }
   li::before { content:""; position:absolute; left:2px; top:11px; width:6px; height:6px; border-radius:50%; background:#00B5A5; }
   .note { margin-top:40px; font-size:13px; color:rgba(255,255,255,0.35); }
