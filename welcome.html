@@ -15,12 +15,13 @@
   }
   /* robot CONTAINED upper-right, only a small bleed off the right edge (like the reference) */
   .robot {
-    position:absolute; width:280px; top:64px; right:-34px; z-index:1;
+    position:absolute; width:280px; top:60px; right:-34px; z-index:1;
     filter: drop-shadow(0 20px 30px rgba(0,0,0,0.55));
     pointer-events:none; user-select:none;
+    transform: rotate(-13deg);                 /* face at an angle (CCW, antenna up-right) */
     animation: float 5s ease-in-out infinite;
   }
-  @keyframes float { 0%,100%{transform:translateY(0) rotate(9deg)} 50%{transform:translateY(-7px) rotate(9deg)} }
+  @keyframes float { 0%,100%{transform:translateY(0) rotate(-13deg)} 50%{transform:translateY(-7px) rotate(-13deg)} }
   .ph { position:absolute; top:10px; left:10px; z-index:9; font-size:9px; letter-spacing:.03em;
         color:#6a6a6c; background:#000a; padding:2px 6px; border-radius:5px; }
   .hero { height:330px; flex:0 0 auto; }                 /* space for the robot */
@@ -32,9 +33,9 @@
   .odot { display:inline-block; width:11px; height:11px; border-radius:50%; background:#FF6A2C; margin-left:3px; vertical-align:-3px; }
   .sub {
     margin-top:20px; z-index:2; font-family:'Space Grotesk',sans-serif; font-weight:700;
-    font-size:27px; letter-spacing:-0.01em; color:#fff; display:flex; align-items:baseline; gap:10px;
+    font-size:27px; letter-spacing:-0.01em; color:#fff; display:flex; align-items:center; gap:10px;
   }
-  .reel { display:inline-block; height:1.2em; overflow:hidden; position:relative; top:0.16em; }
+  .reel { display:inline-block; height:1.2em; overflow:hidden; position:relative; }
   .reel ul { list-style:none; animation: roll 6s steps(1,end) infinite; }
   .reel li { height:1.2em; line-height:1.2em; font-weight:700;
              background:linear-gradient(90deg,#00B5A5 0%,#E8B84A 100%);
@@ -45,15 +46,13 @@
   }
   .grow { flex:1 1 auto; min-height:24px; }
   .footer { z-index:3; padding-bottom:34px; }
-  .signin { text-align:center; margin-bottom:22px; font-family:'Space Grotesk',sans-serif;
+  .signin { text-align:left; margin-bottom:22px; font-family:'Space Grotesk',sans-serif;
             font-size:18px; font-weight:500; color:rgba(255,255,255,0.6); }
   .signin a { color:#FF6A2C; font-weight:700; text-decoration:none; }
   .cta { width:100%; height:66px; border:none; border-radius:999px; background:#00B5A5; color:#161616;
          font-family:'Space Grotesk',sans-serif; font-size:21px; font-weight:700; letter-spacing:-0.02em;
          display:flex; align-items:center; justify-content:center; gap:14px; }
-  .stripe { position:absolute; bottom:0; left:0; right:0; height:4px;
-            background:linear-gradient(90deg,#FF6A2C 0%,#E8B84A 50%,#00B5A5 100%); }
-  @media (prefers-reduced-motion: reduce){ .robot{animation:none;transform:rotate(9deg)} .reel ul{animation:none} }
+  @media (prefers-reduced-motion: reduce){ .robot{animation:none;transform:rotate(-13deg)} .reel ul{animation:none} }
 </style>
 </head>
 <body>
@@ -75,7 +74,6 @@
       <div class="signin">Already have an account? <a href="#">Sign in</a></div>
       <button class="cta">Get started&nbsp;&nbsp;&#8594;</button>
     </div>
-    <div class="stripe"></div>
   </div>
 </body>
 </html>
