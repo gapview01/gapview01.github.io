@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" /><meta http-equiv="Expires" content="0" />
+<meta name="viewport" content="width=390, initial-scale=1, viewport-fit=cover" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:#0E0E0E;}
+  .screen{position:relative;width:100%;min-height:100dvh;overflow:hidden;background:#0E0E0E;
+          display:flex;flex-direction:column;padding:0 24px;font-family:'Plus Jakarta Sans',system-ui,sans-serif;}
+  /* top bar */
+  .topbar{display:flex;align-items:center;gap:12px;padding-top:16px;}
+  .back{width:24px;height:24px;flex:0 0 auto;cursor:pointer;}
+  .back svg{stroke:rgba(255,255,255,0.9);}
+  .segs{flex:1 1 auto;display:flex;gap:6px;}
+  .seg{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,0.12);}
+  .seg.on{background:#00B5A5;}
+  .chip{flex:0 0 auto;display:flex;align-items:center;gap:8px;}
+  .chip svg{stroke:rgba(255,255,255,0.7);}
+  .chip span{font-size:13px;font-weight:600;letter-spacing:0.12em;color:rgba(255,255,255,0.7);text-transform:uppercase;}
+  /* hero glyph */
+  .glyph{margin-top:80px;}
+  /* headline */
+  .h1{margin-top:24px;font-size:40px;font-weight:800;line-height:1.05;letter-spacing:-0.03em;color:#fff;}
+  .h1 .dot{color:#FF6A2C;}
+  .sub{margin-top:8px;font-size:16px;font-weight:500;line-height:1.5;color:rgba(255,255,255,0.6);white-space:nowrap;}
+  /* footer */
+  .grow{flex:1 1 auto;min-height:24px;}
+  .footer{padding-bottom:24px;}
+  .helper{text-align:center;margin-bottom:24px;font-size:16px;font-weight:500;color:rgba(255,255,255,0.5);}
+  .cta{width:100%;height:64px;border:none;border-radius:9999px;background:#00B5A5;color:#0E0E0E;
+       font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:700;
+       display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;}
+  .cta svg{stroke:#0E0E0E;}
+  .stripe{position:absolute;bottom:0;left:0;right:0;height:3px;
+          background:linear-gradient(90deg,#FF6A2C 0%,#E8B84A 50%,#00B5A5 100%);}
+</style>
+</head>
+<body>
+  <div class="screen">
+    <div class="topbar">
+      <span class="back" onclick="history.length>1?history.back():location.href='face-id.html'"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></span>
+      <span class="segs"><span class="seg on"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></span>
+      <span class="chip"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="1.5"><rect x="1.6" y="1.6" width="10.8" height="10.8" rx="2.5"/></svg><span>BOX IT</span></span>
+    </div>
+
+    <div class="glyph">
+      <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#FFFFFF" stroke-opacity="0.9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 7 H11 a4 4 0 0 0 -4 4 V18"/>
+        <path d="M46 7 H53 a4 4 0 0 1 4 4 V18"/>
+        <path d="M7 46 V53 a4 4 0 0 0 4 4 H18"/>
+        <path d="M57 46 V53 a4 4 0 0 1 -4 4 H46"/>
+        <path d="M25 25 V31"/>
+        <path d="M39 25 V31"/>
+        <path d="M25 41 Q32 47 39 41" stroke="#FF6A2C" stroke-width="1.5"/>
+      </svg>
+    </div>
+
+    <div class="h1">Locked to your face<span class="dot">.</span></div>
+    <div class="sub">Only you can open Toreva here.</div>
+
+    <div class="grow"></div>
+
+    <div class="footer">
+      <div class="helper">Change anytime in Settings.</div>
+      <button class="cta" onclick="location.href='index.html'">Continue
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+    <div class="stripe"></div>
+  </div>
+</body>
+</html>
