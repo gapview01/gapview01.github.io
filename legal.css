@@ -10,7 +10,7 @@
   /* line heights */
   --lh-tight:1.05; --lh-snug:1.15; --lh-body:1.6;
   /* colors */
-  --bg:#0E0E0E; --fg:#FFFFFF; --fg-muted:rgba(255,255,255,0.62);
+  --bg:#1B1B1E; --fg:#FFFFFF; --fg-muted:rgba(255,255,255,0.62);
   --teal:#00B5A5; --orange:#FF6A2C; --gold:#E8B84A;
 }
 *{ margin:0; padding:0; box-sizing:border-box; }
