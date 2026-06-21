@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=390, initial-scale=1, viewport-fit=cover" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&family=Space+Grotesk:wght@400;500;700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { background:#1A1A1A; }
+  body { font-family:'Space Grotesk',system-ui,sans-serif; color:#fff; padding:0 24px 64px; -webkit-text-size-adjust:100%; }
+  .back { width:44px; height:44px; margin-top:24px; border-radius:50%; background:rgba(255,255,255,0.06);
+          display:flex; align-items:center; justify-content:center; cursor:pointer; }
+  .back svg { stroke:rgba(255,255,255,0.7); }
+  h1 { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:44px; line-height:1.04;
+       letter-spacing:-0.035em; color:#fff; margin-top:28px; }
+  h1 .dot { color:#FF6A2C; }
+  .updated { margin-top:10px; font-size:17px; font-weight:400; color:rgba(255,255,255,0.5); }
+  p { margin-top:26px; font-size:18px; line-height:1.55; font-weight:400; color:rgba(255,255,255,0.7); }
+  p b, li b { color:#fff; font-weight:700; }
+  h2 { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:26px; letter-spacing:-0.02em;
+       color:#fff; margin-top:48px; }
+  h2 + p { margin-top:14px; }
+  ul { list-style:none; margin-top:18px; }
+  li { position:relative; padding-left:22px; margin-top:20px; font-size:18px; line-height:1.5;
+       font-weight:400; color:rgba(255,255,255,0.7); }
+  li::before { content:""; position:absolute; left:2px; top:11px; width:6px; height:6px; border-radius:50%; background:#00B5A5; }
+  .note { margin-top:40px; font-size:13px; color:rgba(255,255,255,0.35); }
+</style>
+</head>
+<body>
+  <div class="back" onclick="history.length>1?history.back():location.href='hi-toreva.html'">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+  </div>
+
+  <h1>Terms of service<span class="dot">.</span></h1>
+  <div class="updated">Last updated 18 May 2026</div>
+
+  <p>These terms of service (&ldquo;Terms&rdquo;) form part of the User Agreements between you and <b>Toreva Pty Ltd</b> (&ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;the Company&rdquo;). By using the Service, you agree to these Terms.</p>
+
+  <h2>1. Definitions</h2>
+  <p>Capitalised terms have the meanings below.</p>
+  <ul>
+    <li><b>Service:</b> The Toreva software interface, tooling, and related operational features.</li>
+    <li><b>Wallet:</b> A user-controlled blockchain wallet or address used to authorise transactions.</li>
+    <li><b>Vault:</b> A strategy-linked smart contract account that can hold assets subject to your instruction.</li>
+    <li><b>Strategy:</b> A configurable method for user-directed on-chain actions under defined parameters.</li>
+    <li><b>Autopilot:</b> An automated execution mode that runs your chosen Strategy within your limits.</li>
+    <li><b>Agent Wallet:</b> A session-scoped wallet Toreva uses to execute approved on-chain actions on your behalf.</li>
+  </ul>
+
+  <h2>2. Eligibility</h2>
+  <p>You must be at least 18 and legally able to enter these Terms. The Service is not offered where prohibited by law.</p>
+
+  <h2>3. Non-custodial service</h2>
+  <p>Toreva is non-custodial. You retain control of your Wallet and assets at all times; we never take custody of your funds and cannot move them without your authorisation.</p>
+
+  <h2>4. Risks</h2>
+  <p>Digital assets are volatile and on-chain actions are irreversible. Your balance can go up and down. You are responsible for the parameters and limits you set.</p>
+
+  <div class="note">Representative content for layout review — production keeps the full legal text.</div>
+</body>
+</html>
