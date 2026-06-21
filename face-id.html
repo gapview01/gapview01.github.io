@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" /><meta http-equiv="Expires" content="0" />
+<meta name="viewport" content="width=390, initial-scale=1, viewport-fit=cover" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:#0E0E0E;}
+  .screen{position:relative;width:100%;min-height:100dvh;overflow:hidden;background:#0E0E0E;
+          display:flex;flex-direction:column;padding:0 24px;font-family:'Plus Jakarta Sans',system-ui,sans-serif;}
+  /* top bar */
+  .topbar{display:flex;align-items:center;gap:8px;padding-top:24px;}
+  .back{width:24px;height:24px;flex:0 0 auto;cursor:pointer;}
+  .back svg{stroke:rgba(255,255,255,0.7);}
+  .progress{flex:1 1 auto;display:flex;justify-content:center;}
+  .track{width:200px;height:3px;border-radius:2px;background:rgba(255,255,255,0.12);overflow:hidden;}
+  .fill{width:25%;height:100%;background:#FFFFFF;border-radius:2px;}
+  .chip{flex:0 0 auto;display:flex;align-items:center;gap:8px;}
+  .chip svg{stroke:rgba(255,255,255,0.55);}
+  .chip span{font-size:11px;font-weight:700;letter-spacing:0.12em;color:rgba(255,255,255,0.7);text-transform:uppercase;}
+  /* hero glyph */
+  .glyph{margin-top:96px;}
+  /* headline */
+  .h1{margin-top:32px;font-size:40px;font-weight:800;line-height:1.05;letter-spacing:-0.03em;color:#fff;}
+  .h1 .dot{color:#FF6A2C;}
+  .sub{margin-top:12px;font-size:16px;font-weight:500;line-height:1.5;letter-spacing:-0.01em;color:rgba(255,255,255,0.6);white-space:nowrap;}
+  /* footer */
+  .grow{flex:1 1 auto;min-height:24px;}
+  .footer{padding-bottom:24px;}
+  .helper{text-align:center;margin-bottom:16px;font-size:13px;font-weight:600;color:rgba(255,255,255,0.55);}
+  .helper a{color:#FF6A2C;font-weight:700;text-decoration:none;}
+  .cta{width:100%;height:64px;border:none;border-radius:9999px;background:#00B5A5;color:#0E0E0E;
+       font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.02em;
+       display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;}
+  .cta svg{stroke:#0E0E0E;}
+  .stripe{position:absolute;bottom:0;left:0;right:0;height:3px;
+          background:linear-gradient(90deg,#FF6A2C 0%,#E8B84A 50%,#00B5A5 100%);}
+</style>
+</head>
+<body>
+  <div class="screen">
+    <div class="topbar">
+      <span class="back" onclick="history.length>1?history.back():location.href='hi-toreva.html'"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></span>
+      <span class="progress"><span class="track"><span class="fill"></span></span></span>
+      <span class="chip"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="1.4"><rect x="1.4" y="1.4" width="9.2" height="9.2" rx="2"/></svg><span>BOX IT</span></span>
+    </div>
+
+    <div class="glyph">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="#FFFFFF" stroke-opacity="0.9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 8 H12 a4 4 0 0 0 -4 4 V22"/>
+        <path d="M58 8 H68 a4 4 0 0 1 4 4 V22"/>
+        <path d="M8 58 V68 a4 4 0 0 0 4 4 H22"/>
+        <path d="M72 58 V68 a4 4 0 0 1 -4 4 H58"/>
+        <path d="M30 31 V39"/>
+        <path d="M50 31 V39"/>
+        <path d="M40 32 V44 H35"/>
+        <path d="M31 52 Q40 60 49 52" stroke="#FF6A2C" stroke-width="2"/>
+      </svg>
+    </div>
+
+    <div class="h1">Lock it to you<span class="dot">.</span></div>
+    <div class="sub">Only your face unlocks Toreva.</div>
+
+    <div class="grow"></div>
+
+    <div class="footer">
+      <div class="helper">Lost access? <a href="#">Recover account</a></div>
+      <button class="cta" onclick="location.href='index.html'">Continue with Face ID
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+    <div class="stripe"></div>
+  </div>
+</body>
+</html>
