@@ -54,7 +54,7 @@
 <body>
   <div class="screen">
     <div class="topbar">
-      <span class="back"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></span>
+      <span class="back" style="cursor:pointer" onclick="history.length>1?history.back():location.href='welcome.html'"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></span>
       <span class="progress"><span class="track"><span class="fill"></span></span></span>
       <span class="chip">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="1.6"><rect x="1.2" y="1.2" width="9.6" height="9.6" rx="2"/></svg>
@@ -84,7 +84,7 @@
 
     <div class="footer">
       <div class="legal">By continuing, you agree to <a href="#">Terms</a> &amp; <a href="#">Privacy</a></div>
-      <button class="cta">Continue
+      <button class="cta" style="cursor:pointer" onclick="location.href='index.html'">Continue
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
     </div>
