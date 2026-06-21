@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;800&display=swap');
+
+/* ===== Toreva legal/long-form type system (LOCKED — founder 2026-06-21) ===== */
+:root{
+  --font-sans:'Plus Jakarta Sans', system-ui, sans-serif;
+  /* the ONLY five sizes */
+  --text-display:44px; --text-h2:22px; --text-body:16px; --text-meta:13px; --text-micro:11px;
+  /* weights */
+  --fw-regular:400; --fw-medium:500; --fw-bold:800;
+  /* line heights */
+  --lh-tight:1.05; --lh-snug:1.15; --lh-body:1.6;
+  /* colors */
+  --bg:#0E0E0E; --fg:#FFFFFF; --fg-muted:rgba(255,255,255,0.62);
+  --teal:#00B5A5; --orange:#FF6A2C; --gold:#E8B84A;
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html,body{ background:var(--bg); }
+body{ font-family:var(--font-sans); color:var(--fg); padding:32px 24px 120px; -webkit-text-size-adjust:100%; }
+
+.back{ width:24px; height:24px; cursor:pointer; }   /* no circular background */
+.back svg{ stroke:rgba(255,255,255,0.7); }
+
+h1{ margin-top:32px; font-size:var(--text-display); font-weight:var(--fw-bold);
+    line-height:var(--lh-tight); letter-spacing:-0.03em; color:var(--fg); }
+h1 .dot{ color:var(--orange); }
+.meta{ margin-top:8px; font-size:var(--text-meta); font-weight:var(--fw-regular);
+       line-height:var(--lh-body); color:var(--fg-muted); }
+
+.intro{ margin-top:40px; }
+p{ font-size:var(--text-body); line-height:var(--lh-body); font-weight:var(--fw-regular); color:var(--fg-muted); }
+p + p{ margin-top:20px; }
+.em{ font-weight:var(--fw-medium); color:var(--fg); }   /* inline emphasis: medium, white, SAME size */
+
+.section{ margin-top:48px; }
+.section h2{ font-size:var(--text-h2); font-weight:var(--fw-bold); line-height:var(--lh-snug);
+             color:var(--fg); display:flex; align-items:baseline; }
+.section h2 .num{ margin-right:16px; color:var(--fg); font-weight:var(--fw-bold); }  /* white, not teal */
+.section .body{ margin-top:16px; }
+.section .body p + p{ margin-top:20px; }
+
+ul{ list-style:none; margin-top:16px; }
+li{ position:relative; padding-left:18px; font-size:var(--text-body); line-height:var(--lh-body); color:var(--fg-muted); }
+li + li{ margin-top:20px; }
+li::before{ content:"–"; position:absolute; left:0; color:rgba(255,255,255,0.3); }  /* en-dash, no teal bullet */
+li .em{ }  /* definition term: medium white, same size (inherits .em) */
+
+.fineprint{ margin-top:40px; font-size:var(--text-micro); color:rgba(255,255,255,0.32); }
+
+.stripe{ position:fixed; bottom:0; left:0; right:0; height:3px;
+         background:linear-gradient(90deg,var(--orange) 0%,var(--gold) 50%,var(--teal) 100%); }

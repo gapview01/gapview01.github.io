@@ -2,65 +2,54 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" /><meta http-equiv="Expires" content="0" />
 <meta name="viewport" content="width=390, initial-scale=1, viewport-fit=cover" />
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&family=Space+Grotesk:wght@400;500;700&display=swap');
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html,body { background:#1A1A1A; }
-  body { font-family:'Space Grotesk',system-ui,sans-serif; color:#fff; padding:0 24px 64px; -webkit-text-size-adjust:100%; }
-  .back { width:44px; height:44px; margin-top:24px; border-radius:50%; background:rgba(255,255,255,0.06);
-          display:flex; align-items:center; justify-content:center; cursor:pointer; }
-  .back svg { stroke:rgba(255,255,255,0.7); }
-  /* STANDARD type scale (matches Hi-Toreva): header 40px, subheader 24px, body 17px */
-  h1 { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:40px; line-height:1.05;
-       letter-spacing:-0.03em; color:#fff; margin-top:28px; }
-  h1 .dot { color:#FF6A2C; }
-  .updated { margin-top:10px; font-size:17px; font-weight:400; color:rgba(255,255,255,0.55); }
-  p { margin-top:24px; font-size:17px; line-height:1.5; font-weight:400; color:rgba(255,255,255,0.7); }
-  p b, li b { color:#fff; font-weight:700; }
-  h2 { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:24px; letter-spacing:-0.02em;
-       color:#fff; margin-top:44px; }
-  h2 + p { margin-top:12px; }
-  ul { list-style:none; margin-top:16px; }
-  li { position:relative; padding-left:22px; margin-top:18px; font-size:17px; line-height:1.5;
-       font-weight:400; color:rgba(255,255,255,0.7); }
-  li::before { content:""; position:absolute; left:2px; top:11px; width:6px; height:6px; border-radius:50%; background:#00B5A5; }
-  .note { margin-top:40px; font-size:13px; color:rgba(255,255,255,0.35); }
-</style>
+<link rel="stylesheet" href="legal.css?v=1" />
 </head>
 <body>
   <div class="back" onclick="history.length>1?history.back():location.href='hi-toreva.html'">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
   </div>
 
   <h1>Terms of service<span class="dot">.</span></h1>
-  <div class="updated">Last updated 18 May 2026</div>
+  <div class="meta">Last updated 18 May 2026</div>
 
-  <p>These terms of service (&ldquo;Terms&rdquo;) form part of the User Agreements between you and <b>Toreva Pty Ltd</b> (&ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;the Company&rdquo;). By using the Service, you agree to these Terms.</p>
+  <div class="intro">
+    <p>These terms of service (&ldquo;Terms&rdquo;) form part of the User Agreements between you and <span class="em">Toreva Pty Ltd</span> (&ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;the Company&rdquo;). By using the Service, you agree to these Terms.</p>
+  </div>
 
-  <h2>1. Definitions</h2>
-  <p>Capitalised terms have the meanings below.</p>
-  <ul>
-    <li><b>Service:</b> The Toreva software interface, tooling, and related operational features.</li>
-    <li><b>Wallet:</b> A user-controlled blockchain wallet or address used to authorise transactions.</li>
-    <li><b>Vault:</b> A strategy-linked smart contract account that can hold assets subject to your instruction.</li>
-    <li><b>Strategy:</b> A configurable method for user-directed on-chain actions under defined parameters.</li>
-    <li><b>Autopilot:</b> An automated execution mode that runs your chosen Strategy within your limits.</li>
-    <li><b>Agent Wallet:</b> A session-scoped wallet Toreva uses to execute approved on-chain actions on your behalf.</li>
-  </ul>
+  <div class="section">
+    <h2><span class="num">1.</span> Definitions</h2>
+    <div class="body">
+      <p>Capitalised terms have the meanings below.</p>
+      <ul>
+        <li><span class="em">Service:</span> The Toreva software interface, tooling, and related operational features.</li>
+        <li><span class="em">Wallet:</span> A user-controlled blockchain wallet or address used to authorise transactions.</li>
+        <li><span class="em">Vault:</span> A strategy-linked smart contract account that can hold assets subject to your instruction.</li>
+        <li><span class="em">Strategy:</span> A configurable method for user-directed on-chain actions under defined parameters.</li>
+        <li><span class="em">Autopilot:</span> An automated execution mode that runs your chosen Strategy within your limits.</li>
+        <li><span class="em">Agent Wallet:</span> A session-scoped wallet Toreva uses to execute approved on-chain actions on your behalf.</li>
+      </ul>
+    </div>
+  </div>
 
-  <h2>2. Eligibility</h2>
-  <p>You must be at least 18 and legally able to enter these Terms. The Service is not offered where prohibited by law.</p>
+  <div class="section">
+    <h2><span class="num">2.</span> Eligibility</h2>
+    <div class="body"><p>You must be at least 18 and legally able to enter these Terms. The Service is not offered where prohibited by law.</p></div>
+  </div>
 
-  <h2>3. Non-custodial service</h2>
-  <p>Toreva is non-custodial. You retain control of your Wallet and assets at all times; we never take custody of your funds and cannot move them without your authorisation.</p>
+  <div class="section">
+    <h2><span class="num">3.</span> Non-custodial service</h2>
+    <div class="body"><p>Toreva is non-custodial. You retain control of your Wallet and assets at all times; we never take custody of your funds and cannot move them without your authorisation.</p></div>
+  </div>
 
-  <h2>4. Risks</h2>
-  <p>Digital assets are volatile and on-chain actions are irreversible. Your balance can go up and down. You are responsible for the parameters and limits you set.</p>
+  <div class="section">
+    <h2><span class="num">4.</span> Risks</h2>
+    <div class="body"><p>Digital assets are volatile and on-chain actions are irreversible. Your balance can go up and down. You are responsible for the parameters and limits you set.</p></div>
+  </div>
 
-  <div class="note">Representative content for layout review — production keeps the full legal text.</div>
+  <div class="fineprint">Representative content for layout review — production keeps the full legal text.</div>
+  <div class="stripe"></div>
 </body>
 </html>
