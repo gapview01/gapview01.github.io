@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" /><meta http-equiv="Expires" content="0" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Toreva — Chunk 1 (as built)</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;background:#0c0c0d;font-family:-apple-system,system-ui,sans-serif;overflow:hidden;}
+  #stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#0c0c0d;}
+  #shot{max-width:100%;max-height:calc(100% - 56px);object-fit:contain;display:block;user-select:none;-webkit-user-select:none;}
+  /* tap zones */
+  .zone{position:fixed;top:0;bottom:56px;width:38%;z-index:5;}
+  .zone.left{left:0;} .zone.right{right:0;}
+  /* progress dots */
+  #dots{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);left:0;right:0;display:flex;gap:6px;justify-content:center;z-index:6;}
+  #dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.25);transition:background .2s,width .2s;}
+  #dots i.on{background:#00B5A5;width:18px;border-radius:3px;}
+  /* caption bar */
+  #bar{position:fixed;left:0;right:0;bottom:0;height:56px;display:flex;align-items:center;justify-content:space-between;
+       padding:0 16px calc(env(safe-area-inset-bottom,0px)) 16px;background:rgba(14,14,16,0.96);z-index:6;}
+  #cap{font-size:14px;font-weight:600;color:#fff;}
+  #cap small{font-weight:400;color:#8a8a8c;margin-left:8px;}
+  #back{font-size:14px;font-weight:600;color:#00B5A5;background:none;border:none;cursor:pointer;padding:8px;}
+  #back[disabled]{color:#444;cursor:default;}
+  #next{font-size:14px;font-weight:600;color:#00B5A5;cursor:pointer;}
+  #flag{position:fixed;top:calc(env(safe-area-inset-top,0px) + 24px);left:50%;transform:translateX(-50%);z-index:7;
+        background:rgba(255,106,44,0.16);color:#FF6A2C;font-size:11px;font-weight:700;padding:4px 10px;border-radius:9999px;display:none;}
+</style>
+</head>
+<body>
+  <div id="stage"><img id="shot" alt="" /></div>
+  <div class="zone left" onclick="prev()"></div>
+  <div class="zone right" onclick="next()"></div>
+  <div id="dots"></div>
+  <div id="flag"></div>
+  <div id="bar">
+    <button id="back" onclick="prev()">‹ Back</button>
+    <span id="cap"></span>
+    <span id="next" onclick="next()">next ›</span>
+  </div>
+<script>
+  var A="chunk1-asbuilt-assets/";
+  var screens=[
+    {img:A+"onb-00-rendered.png", name:"Welcome",            step:"O0"},
+    {img:A+"onb-01-rendered.png", name:"Hi, I’m Toreva",  step:"O1", flag:"3 deviations to ratify"},
+    {img:A+"onb-02-rendered.png", name:"Lock it to you",      step:"O2 · Face ID"},
+    {img:A+"onb-04-rendered.png", name:"Locked to your face", step:"O4"},
+    {img:A+"onb-05-rendered.png", name:"Your name",           step:"O5"},
+    {img:A+"onb-06-rendered.png", name:"Your birthday",       step:"O6 · input (wheel = follow-up)"},
+    {img:A+"onb-07-rendered.png", name:"Recovery phrase",     step:"O7"},
+    {img:A+"onb-08-rendered.png", name:"Pick your start",     step:"O8 · fork · placeholder art"}
+  ];
+  var i=0;
+  function render(){
+    var s=screens[i];
+    document.getElementById("shot").src=s.img;
+    document.getElementById("cap").innerHTML=s.name+" <small>"+s.step+"</small>";
+    document.getElementById("back").disabled=(i===0);
+    document.getElementById("next").style.visibility=(i===screens.length-1)?"hidden":"visible";
+    var f=document.getElementById("flag");
+    if(s.flag){f.textContent="⚠ "+s.flag;f.style.display="block";}else{f.style.display="none";}
+    var d=document.getElementById("dots");d.innerHTML="";
+    for(var k=0;k<screens.length;k++){var el=document.createElement("i");if(k===i)el.className="on";d.appendChild(el);}
+  }
+  function next(){if(i<screens.length-1){i++;render();}}
+  function prev(){if(i>0){i--;render();}}
+  document.addEventListener("keydown",function(e){if(e.key==="ArrowRight")next();if(e.key==="ArrowLeft")prev();});
+  render();
+</script>
+<noscript>Enable JavaScript to view the flow.</noscript>
+</body>
+</html>
