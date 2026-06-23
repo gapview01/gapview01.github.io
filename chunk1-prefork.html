@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+<title>Toreva — Chunk 1: Pre-fork onboarding</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body { height:100%; background:#0b0b0d; }
+  body {
+    font-family:-apple-system, system-ui, "Space Grotesk", sans-serif;
+    color:#fff; overflow:hidden; user-select:none; -webkit-user-select:none;
+  }
+  /* phone stage — full-bleed on phones, framed card on desktop */
+  .stage {
+    position:fixed; inset:0; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; background:#0b0b0d;
+  }
+  .phone {
+    position:relative; width:100%; max-width:430px; height:100%;
+    background:#111114; overflow:hidden;
+    display:flex; flex-direction:column;
+  }
+  @media (min-width:480px){
+    .phone{
+      height:calc(100% - 32px); margin:16px 0; border-radius:34px;
+      box-shadow:0 24px 70px rgba(0,0,0,.6); border:1px solid #232327;
+    }
+  }
+  /* the founder screenshot, full-bleed inside the phone, crisp (2x source) */
+  .shot {
+    flex:1 1 auto; width:100%; height:100%;
+    background-position:center top; background-repeat:no-repeat; background-size:contain;
+    image-rendering:auto;
+  }
+  /* full-screen tap target advances; left edge taps go back */
+  .tap {
+    position:absolute; inset:0; z-index:5; cursor:pointer;
+    -webkit-touch-callout:none;
+  }
+  /* caption chip — tells the founder where he is */
+  .cap {
+    position:absolute; left:0; right:0; bottom:0; z-index:8;
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+    background:linear-gradient(0deg, rgba(8,8,10,.92) 0%, rgba(8,8,10,.78) 60%, rgba(8,8,10,0) 100%);
+    font-size:13px; pointer-events:none;
+  }
+  .cap .name { font-weight:700; color:#fff; }
+  .cap .step { color:#8a8a90; font-weight:500; }
+  .cap .hint { color:#00B5A5; font-weight:700; font-size:12px; }
+  /* back affordance — top-left, only when there is a previous step */
+  .back {
+    position:absolute; top:0; left:0; z-index:9;
+    padding:14px 18px calc(14px) 18px;
+    margin:max(8px, env(safe-area-inset-top)) 4px 0 4px;
+    font-size:15px; font-weight:700; color:#fff; cursor:pointer;
+    background:rgba(8,8,10,.55); border-radius:0 0 14px 0;
+    backdrop-filter:blur(3px);
+  }
+  .back.hidden { display:none; }
+  /* progress dots */
+  .dots {
+    position:absolute; top:0; left:0; right:0; z-index:7;
+    display:flex; gap:5px; justify-content:center;
+    padding-top:max(12px, env(safe-area-inset-top)); pointer-events:none;
+  }
+  .dots i { width:6px; height:6px; border-radius:50%; background:#3a3a40; transition:background .15s; }
+  .dots i.on { background:#00B5A5; }
+  /* fork banner on the final screen */
+  .fork {
+    position:absolute; left:0; right:0; bottom:54px; z-index:8;
+    display:flex; gap:10px; justify-content:center; padding:0 16px; pointer-events:none;
+  }
+  .fork span {
+    flex:1; max-width:170px; text-align:center; padding:11px 0; border-radius:14px;
+    font-weight:700; font-size:15px; border:1.5px solid;
+  }
+  .fork .crypto { color:#E8B84A; border-color:#E8B84A; background:rgba(232,184,74,.08); }
+  .fork .cash   { color:#00B5A5; border-color:#00B5A5; background:rgba(0,181,165,.08); }
+  .fork.hidden { display:none; }
+  /* desktop helper line */
+  .help {
+    position:fixed; bottom:6px; left:0; right:0; text-align:center;
+    color:#55555c; font-size:11px; z-index:2;
+  }
+  @media (max-width:479px){ .help{ display:none; } }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="phone">
+      <div class="shot" id="shot"></div>
+      <div class="dots" id="dots"></div>
+      <div class="back hidden" id="back">‹ Back</div>
+      <div class="fork hidden" id="fork">
+        <span class="crypto">Crypto ▸</span>
+        <span class="cash">Cash ▸</span>
+      </div>
+      <div class="cap">
+        <span><span class="name" id="capName"></span> <span class="step" id="capStep"></span></span>
+        <span class="hint" id="capHint">tap to continue ›</span>
+      </div>
+      <div class="tap" id="tap"></div>
+    </div>
+  </div>
+  <div class="help">Click the screen to advance · click the left edge or “Back” to go back · ?v=2</div>
+
+<script>
+// ── Chunk 1 — pre-fork onboarding (O0–O8), the shared spine before Crypto│Cash ──
+// Each step shows the founder's own Stickerverse screenshot full-bleed.
+var STEPS = [
+  { img:"onb-00-crypto.png", name:"Welcome",          step:"O0 · Box it. Rule it. Run it." },
+  { img:"onb-01-crypto.png", name:"Hi, I'm Toreva",   step:"O1 · meet the agent" },
+  { img:"onb-02-crypto.png", name:"Lock it to you",   step:"O2 · Face ID / biometric" },
+  { img:"onb-03-crypto.png", name:"Save a passkey",   step:"O3 · 1Password / Chrome / Passwords" },
+  { img:"onb-04-crypto.png", name:"Locked to your face", step:"O4 · confirmation" },
+  { img:"onb-05-crypto.png", name:"Your name",        step:"O5 · profile" },
+  { img:"onb-06-crypto.png", name:"Your birthday",    step:"O6 · DOB wheel" },
+  { img:"onb-07-crypto.png", name:"Recovery phrase",  step:"O7 · written backstop + cloud backup" },
+  { img:"onb-08-crypto.png", name:"Pick your start",  step:"O8 · BRANCH — Crypto │ Cash", fork:true }
+];
+var BASE = "chunk1-assets/";
+var i = 0;
+
+function clampFromHash(){
+  var h = parseInt((location.hash||"").replace(/[^0-9]/g,""), 10);
+  if (!isNaN(h) && h>=0 && h<STEPS.length) i = h;
+}
+function preload(){
+  STEPS.forEach(function(s){ var im=new Image(); im.src=BASE+s.img; });
+}
+function render(){
+  var s = STEPS[i];
+  document.getElementById("shot").style.backgroundImage = "url('"+BASE+s.img+"')";
+  document.getElementById("capName").textContent = s.name;
+  document.getElementById("capStep").textContent = s.step;
+  // dots
+  var d = document.getElementById("dots"); d.innerHTML="";
+  for (var k=0;k<STEPS.length;k++){ var dot=document.createElement("i"); if(k===i) dot.className="on"; d.appendChild(dot); }
+  // back
+  document.getElementById("back").className = "back" + (i===0 ? " hidden":"");
+  // fork + final hint
+  document.getElementById("fork").className = "fork" + (s.fork ? "":" hidden");
+  document.getElementById("capHint").textContent = s.fork ? "end of Chunk 1 — both branches are later chunks" : "tap to continue ›";
+  // keep the hash in sync (so a refresh / share lands on the same step)
+  if (history.replaceState) history.replaceState(null,"","#"+i); else location.hash = i;
+}
+function next(){ if (i < STEPS.length-1){ i++; render(); } }
+function prev(){ if (i > 0){ i--; render(); } }
+
+document.getElementById("tap").addEventListener("click", function(e){
+  // left ~22% of width = go back; rest = advance
+  var w = this.getBoundingClientRect().width;
+  if (e.clientX - this.getBoundingClientRect().left < w*0.22 && i>0) prev(); else next();
+});
+document.getElementById("back").addEventListener("click", function(e){ e.stopPropagation(); prev(); });
+// keyboard for desktop review
+document.addEventListener("keydown", function(e){
+  if (e.key==="ArrowRight"||e.key===" "||e.key==="Enter") next();
+  else if (e.key==="ArrowLeft") prev();
+});
+window.addEventListener("hashchange", function(){ clampFromHash(); render(); });
+
+clampFromHash();
+preload();
+render();
+</script>
+</body>
+</html>
