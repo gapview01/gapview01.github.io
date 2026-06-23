@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" /><meta http-equiv="Expires" content="0" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Toreva — Build Cockpit</title>
+<style>
+  :root{--bg:#161616;--card:#1f1f22;--line:#2c2c30;--ink:#fff;--mut:#9a9a9c;--teal:#00B5A5;--orange:#FF6A2C;--gold:#E8B84A;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,system-ui,sans-serif;line-height:1.5;padding:20px 16px 60px;max-width:760px;margin:0 auto;}
+  h1{font-size:24px;letter-spacing:-0.5px;}
+  h1 .dot{color:var(--orange);}
+  .sub{color:var(--mut);font-size:14px;margin:4px 0 22px;}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--mut);margin:26px 0 10px;display:flex;align-items:center;gap:8px;}
+  h2 .n{display:inline-flex;width:22px;height:22px;border-radius:50%;background:var(--teal);color:#0c0c0d;font-weight:700;align-items:center;justify-content:center;font-size:12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px;}
+  .card h3{font-size:15px;margin-bottom:4px;}
+  .card p{font-size:13.5px;color:var(--mut);}
+  a.btn{display:inline-block;background:var(--teal);color:#0c0c0d;text-decoration:none;font-weight:700;font-size:14px;padding:11px 16px;border-radius:9999px;margin:8px 8px 0 0;}
+  a.lnk{color:var(--teal);text-decoration:none;font-weight:600;}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px;}
+  th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{color:var(--mut);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.5px;}
+  .pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:9999px;white-space:nowrap;}
+  .live{background:rgba(0,181,165,.16);color:var(--teal);}
+  .test{background:rgba(232,184,74,.16);color:var(--gold);}
+  .block{background:rgba(255,106,44,.16);color:var(--orange);}
+  .mut{color:var(--mut);}
+  .note{font-size:12px;color:var(--mut);margin-top:6px;font-style:italic;}
+  footer{margin-top:34px;color:#6a6a6c;font-size:12px;border-top:1px solid var(--line);padding-top:14px;}
+</style>
+</head>
+<body>
+  <h1>Toreva — Build Cockpit<span class="dot">.</span></h1>
+  <p class="sub">Three ways to watch the Day-1 build as it happens — so nothing ships worse than today, every change is test-proven, and you can transact your own money (with an honest explainer when a piece isn't ready). Updated 2026-06-23.</p>
+
+  <h2><span class="n">1</span> Look — don't ship worse than today</h2>
+  <div class="card">
+    <h3>The in-progress app (real, behind flags)</h3>
+    <p>Each build branch deploys to a preview; main tracks to staging. These are the actual app, not mockups.</p>
+    <a class="btn" href="https://next.toreva.com">next.toreva.com — preview (per-branch)</a>
+    <a class="btn" href="https://staging.toreva.com">staging.toreva.com — main</a>
+    <p class="note">staging runs mainnet-beta (real chain). app.toreva.com stays the untouched current production to compare against.</p>
+  </div>
+  <div class="card">
+    <h3>Screen-by-screen: current vs target</h3>
+    <p>The full live-vs-target prototype comparison (every screen, delta + owner). New screens land here as they're built.</p>
+    <a class="lnk" href="https://gapview01.github.io/sitemap.html">→ Screen gallery &amp; flow click-through</a>
+  </div>
+  <div class="card">
+    <h3>Auto-guard: visual-diff gate</h3>
+    <p>A merge gate fails any screen that drifts &gt;2% from the approved target. "Worse than current" is blocked by CI, not just by eye.</p>
+    <p class="note">gate:visual — Playwright uplift project vs the 55 target PNGs @ 780×1400.</p>
+  </div>
+
+  <h2><span class="n">2</span> Works — a TDD baseline for every change + end-to-end</h2>
+  <div class="card">
+    <h3>Definition of done (every change builds to this)</h3>
+    <p>Per section / screen / primitive / wiring change: <b>failing test first</b> → green → <b>verify-by-next-athlete</b> → a contribution to the end-to-end flow test. No merge without it.</p>
+  </div>
+  <div class="card">
+    <h3>The end-to-end flow proof</h3>
+    <p>Playwright walks the whole journey and screenshots each state. Key specs already green:</p>
+    <table>
+      <tr><th>Flow</th><th>Spec</th></tr>
+      <tr><td>Full onboarding</td><td class="mut">day1-onboarding.spec.ts</td></tr>
+      <tr><td>Post-funding canonical journey</td><td class="mut">day1-post-funding-canonical-journey.spec.ts</td></tr>
+      <tr><td>Honest "activating" states</td><td class="mut">day1-activating-honesty.spec.ts</td></tr>
+      <tr><td>Seed reveal required (inviolable)</td><td class="mut">onboarding-seed-phrase-reveal-required.spec.ts</td></tr>
+      <tr><td>Wallet / activity / receipts</td><td class="mut">wallet.spec.ts · activity-receipts-real.spec.ts</td></tr>
+    </table>
+    <p class="note">4 merge gates run on every PR: memory-audit · wired-planetary · unit · visual.</p>
+  </div>
+  <div class="card">
+    <h3>Per-change test ledger (fills in as PRs land)</h3>
+    <table>
+      <tr><th>Change</th><th>Owner</th><th>Test → state</th></tr>
+      <tr><td>Earn isolation (Tranche-1)</td><td class="mut">investment-product</td><td><span class="pill test">dispatched</span></td></tr>
+      <tr><td>On-ramp experience (test-mode)</td><td class="mut">frontend</td><td><span class="pill test">dispatched</span></td></tr>
+      <tr><td>KYC → fiat gate</td><td class="mut">identity</td><td><span class="pill test">dispatched</span></td></tr>
+      <tr><td>Native-staking threat-model</td><td class="mut">sentinel/cyber</td><td><span class="pill test">dispatched</span></td></tr>
+    </table>
+  </div>
+
+  <h2><span class="n">3</span> Real money — transact, with a graceful explainer when blocked</h2>
+  <div class="card">
+    <h3>What you can transact today</h3>
+    <p>staging is mainnet-beta — you move <b>real crypto</b>. Fiat-buy runs in Stripe test-mode until the bank + licence land; when you try it, you get a clear "not available yet — waiting on X", never a fake success or a crash.</p>
+    <p class="note">Founder-test is a flag/test-mode (not an <code>if (user===founder)</code> hardcode); at go-live the same flag flips on for everyone — planet-scale, no founder special-case.</p>
+  </div>
+  <div class="card">
+    <h3>Readiness — honest state per piece</h3>
+    <table>
+      <tr><th>Piece</th><th>State</th><th>Blocker / note</th></tr>
+      <tr><td>Earn (USDC→Kamino)</td><td><span class="pill live">live</span></td><td class="mut">real on-chain today</td></tr>
+      <tr><td>Accumulation — buy SOL w/ crypto (swap)</td><td><span class="pill test">building</span></td><td class="mut">reuses live swap verb</td></tr>
+      <tr><td>Accumulation — buy SOL w/ fiat</td><td><span class="pill block">not activatable</span></td><td class="mut">bank + Stripe-live + AUSTRAC</td></tr>
+      <tr><td>Staking (native SOL)</td><td><span class="pill block">not activatable</span></td><td class="mut">sentinel/cyber sign-off + on-chain verb</td></tr>
+      <tr><td>Fiat on-ramp experience (UI)</td><td><span class="pill test">building (test-mode)</span></td><td class="mut">graceful "not ready" until gate green</td></tr>
+      <tr><td>KYC live verification</td><td><span class="pill block">not activatable</span></td><td class="mut">FrankieOne contract + DVS_ENABLED</td></tr>
+    </table>
+  </div>
+
+  <h2><span class="n">4</span> Build status — who's moving</h2>
+  <div class="card">
+    <table>
+      <tr><th>Owner</th><th>Ask</th><th>Pri</th></tr>
+      <tr><td>legal</td><td class="mut">AUSTRAC item-50A un-park + DCE go-live gate</td><td>P0</td></tr>
+      <tr><td>treasury</td><td class="mut">business bank + Stripe + SOL float</td><td>P1</td></tr>
+      <tr><td>frontend</td><td class="mut">on-ramp experience into onboarding (test-mode)</td><td>P1</td></tr>
+      <tr><td>identity</td><td class="mut">KYC → fiat gate + missing stages</td><td>P1</td></tr>
+      <tr><td>investment-product</td><td class="mut">Tranche-1 isolate Earn (Earn stays live)</td><td>P1</td></tr>
+      <tr><td>sentinel/cyber</td><td class="mut">native-staking threat-model</td><td>P1</td></tr>
+      <tr><td>pricing</td><td class="mut">fiat-buy spread/fee model</td><td>P2</td></tr>
+    </table>
+    <p class="note">Your one action: open the business bank + Stripe accounts — the 2–6 week long pole that gates real fiat go-live.</p>
+  </div>
+
+  <footer>Toreva Build Cockpit · maintained by PO · refresh for latest · DEC-2026-028 (Path A on-ramp) · composition plan: day1-composition-plan-from-existing-machinery-001</footer>
+</body>
+</html>
