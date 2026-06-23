@@ -56,9 +56,10 @@
   </div>
 
   <h2><span class="n">2</span> Works — a TDD baseline for every change + end-to-end</h2>
-  <div class="card">
-    <h3>Definition of done (every change builds to this)</h3>
-    <p>Per section / screen / primitive / wiring change: <b>failing test first</b> → green → <b>verify-by-next-athlete</b> → a contribution to the end-to-end flow test. No merge without it.</p>
+  <div class="card" style="border-color:var(--orange);">
+    <h3>Definition of done — TWO gates (founder, 2026-06-23)</h3>
+    <p><b>Gate 1 — you approve the screen.</b> Every visible screen about to ship is shown to you in this chat first; it ships only after you say "yes, go ahead." Nothing visible reaches prod unreviewed. (Pure wiring/primitive changes have no screen to approve, but still pass Gate 2.)</p>
+    <p style="margin-top:8px;"><b>Gate 2 — fully wired &amp; live.</b> "Done" = built → tested (failing-first→green + e2e) → committed → pushed → merged (4 gates green) → deployed → <b>operational</b> → tested-live. Code-written is not done. Merged is not done. Only <b>verified-operational</b> is done.</p>
   </div>
   <div class="card">
     <h3>The end-to-end flow proof</h3>
@@ -74,13 +75,14 @@
     <p class="note">4 merge gates run on every PR: memory-audit · wired-planetary · unit · visual.</p>
   </div>
   <div class="card">
-    <h3>Per-change test ledger (fills in as PRs land)</h3>
+    <h3>Per-change status — the DoD pipeline</h3>
+    <p class="note" style="margin-bottom:8px;">dispatched → mockup ready → <b>YOU approve here</b> → built+tested → merged → deployed → operational ✓</p>
     <table>
-      <tr><th>Change</th><th>Owner</th><th>Test → state</th></tr>
-      <tr><td>Earn isolation (Tranche-1)</td><td class="mut">investment-product</td><td><span class="pill test">dispatched</span></td></tr>
-      <tr><td>On-ramp experience (test-mode)</td><td class="mut">frontend</td><td><span class="pill test">dispatched</span></td></tr>
-      <tr><td>KYC → fiat gate</td><td class="mut">identity</td><td><span class="pill test">dispatched</span></td></tr>
-      <tr><td>Native-staking threat-model</td><td class="mut">sentinel/cyber</td><td><span class="pill test">dispatched</span></td></tr>
+      <tr><th>Change</th><th>Owner</th><th>Stage now</th></tr>
+      <tr><td>Earn isolation (Tranche-1)</td><td class="mut">investment-product</td><td><span class="pill test">dispatched · no screen (Gate-2 only)</span></td></tr>
+      <tr><td>On-ramp experience</td><td class="mut">frontend</td><td><span class="pill test">dispatched · mockup pending → you</span></td></tr>
+      <tr><td>KYC → fiat gate</td><td class="mut">identity</td><td><span class="pill test">dispatched · mockup pending → you</span></td></tr>
+      <tr><td>Native-staking threat-model</td><td class="mut">sentinel/cyber</td><td><span class="pill test">dispatched · no screen (Gate-2 only)</span></td></tr>
     </table>
   </div>
 
